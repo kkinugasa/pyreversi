@@ -1,4 +1,5 @@
 import numpy as np
+import numpy.typing as npt
 import pytest
 
 from pyreversi.game import Game, IllegalActionError
@@ -23,7 +24,7 @@ def test_game_over() -> None:
 def test_execute_action() -> None:
     game = Game.init_game(4)
     game.execute_action(Position(0, 1))
-    config: np.ndarray = np.array(
+    config: npt.NDArray[np.int8] = np.array(
         [
             [0, 1, 0, 0],
             [0, 1, 1, 0],

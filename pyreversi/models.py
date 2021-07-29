@@ -5,6 +5,7 @@ from enum import IntEnum
 from typing import Iterator, NamedTuple, Tuple
 
 import numpy as np
+import numpy.typing as npt
 
 
 class Reversible(IntEnum):
@@ -96,7 +97,7 @@ class Board:
     This is supposed to be immutable
     """
 
-    def __init__(self, config: np.ndarray):
+    def __init__(self, config: npt.NDArray[np.int8]):
         """constractor
 
         config must be a squire matrix. elements of config must be -1, 0, or 1.
@@ -105,7 +106,7 @@ class Board:
         Args:
             config (np.ndarray): configuration of the board
         """
-        self._config: np.ndarray = config.copy()
+        self._config: npt.NDArray[np.int8] = config.copy()
         self._config.setflags(write=False)
 
     def __eq__(self, board: object) -> bool:
@@ -134,10 +135,10 @@ class Board:
         return f"Board(\n{repr(self._config)})"
 
     def __iter__(self) -> Iterator[Position]:
-        return iter([Position(*index) for index in np.ndindex(self.config.shape)])
+        return iter([Position(*index) for index in np.ndindex(*self.config.shape)])
 
     @property
-    def config(self) -> np.ndarray:
+    def config(self) -> npt.NDArray[np.int8]:
         return self._config
 
     def is_in_range(self, position: Position) -> bool:

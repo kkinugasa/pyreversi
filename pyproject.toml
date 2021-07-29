@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "pyreversi"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Kimiaki Kinugasa <kimiakikinugasa@gmail.com>"]
 license = "Apache-2.0"
 
 [tool.poetry.dependencies]
 python = "~3.8"
-numpy = "^1.19.3"
+numpy = "^1.21.1"
 
 [tool.poetry.dev-dependencies]
 pylint = "*"

@@ -7,6 +7,7 @@ from __future__ import annotations
 from typing import FrozenSet, Optional, Tuple
 
 import numpy as np
+import numpy.typing as npt
 
 from pyreversi.models import _DIRECTIONS, Board, Direction, Disk, Position, Square
 
@@ -20,7 +21,7 @@ def init_board(length: int) -> Board:
     Returns:
         Board: [description]
     """
-    config: np.ndarray = np.zeros((length, length), dtype=np.int8)
+    config: npt.NDArray[np.int8] = np.zeros((length, length), dtype=np.int8)
     config[length // 2][length // 2] = Square.LIGHT
     config[length // 2 - 1][length // 2 - 1] = Square.LIGHT
     config[length // 2][length // 2 - 1] = Square.DARK
@@ -131,7 +132,7 @@ def execute_action(board: Board, disk: Disk, position: Position) -> Board:
     # flip_position_listが1なら一枚もひっくり返らないのでlegal actionではない
     # 関数呼び出し側がちゃんとlegal actionとなるように注意する
     assert len(flip_position_list) > 1
-    config: np.ndarray = board.config.copy()
+    config: npt.NDArray[np.int8] = board.config.copy()
     for flipped_position in flip_position_list:
         config[flipped_position] = disk
     return Board(config)

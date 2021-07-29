@@ -1,7 +1,8 @@
 PACKAGE := pyreversi
 VERSION := $$(sed -n 's/__version__ = "\(.*\)"/\1/p' pyreversi/_version.py )
 
-export DOCKER_CONTENT_TRUST = 1
+# It is better to set the value 1.
+export DOCKER_CONTENT_TRUST = 0
 
 # lists all available targets
 list:
@@ -48,10 +49,12 @@ version:
 
 pre-commit: requirements version format lint test
 
+# CIS-DI-0005: DOCKER CONTENT TRUST
+# CIS-DI-0006: HEALTHCHECK
 docker:
 	@hadolint Dockerfile
 	@docker build -t $(PACKAGE):$(VERSION) .
-	@dockle --exit-code 1 --exit-level info --ignore CIS-DI-0006 $(PACKAGE):$(VERSION)
+	@dockle --exit-code 1 --exit-level info --ignore CIS-DI-0006 --ignore CIS-DI-0005 $(PACKAGE):$(VERSION)
 	@trivy image --clear-cache
 	@trivy image --exit-code 1 --ignore-unfixed $(PACKAGE):$(VERSION)
 
