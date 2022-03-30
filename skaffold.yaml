@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta10
+kind: Config
+metadata:
+  name: pyreversi
+build:
+  artifacts:
+    - image: pyreversi
+      context: .
+  local:
+    push: false
+  tagPolicy:
+    dateTime:
+      format: "2006-01-02_15-04-05.999_JST"
+      timezone: "Asia/Tokyo"
+deploy:
+  kustomize:
+    paths:
+      - k8s/overlays/local

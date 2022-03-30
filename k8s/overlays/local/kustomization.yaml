@@ -1,0 +1,19 @@
+resources:
+  - ../../base
+
+namespace: default
+images:
+  - name: base-image
+    newName: pyreversi
+commonLabels:
+  app: pyreversi
+patches:
+  - target:
+      kind: Deployment
+    patch: |-
+      - op: replace
+        path: /metadata/name
+        value: pyreversi
+      - op: replace
+        path: /spec/template/spec/containers/0/name
+        value: pyreversi
