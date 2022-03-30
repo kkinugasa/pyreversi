@@ -8,20 +8,20 @@
 ### Install from this source code
 
 ```sh
-git clone https://github.com/kkinugasa/reversi.git
+git clone https://github.com/kkinugasa/pyreversi.git
 poetry install
 ```
 
 ### Install with poetry
 
 ```sh
-poetry add git+https://github.com/kkinugasa/reversi.git
+poetry add git+https://github.com/kkinugasa/pyreversi.git
 ```
 
 ### Install with pip
 
 ```sh
-pip install git+https://github.com/kkinugasa/reversi.git
+pip install git+https://github.com/kkinugasa/pyreversi.git
 ```
 
 ## Documentation
