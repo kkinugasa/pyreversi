@@ -21,6 +21,16 @@ poetry add git+https://github.com/kkinugasa/reversi.git
 pip install git+https://github.com/kkinugasa/reversi.git
 ```
 
+## Documentation
+
+After pulling this repo and running `poetry install`, run the command:
+
+```sh
+mkdocs serve
+```
+
+Then access <http://127.0.0.1:8888>
+
 ## Play
 
 `python -m pyreversi`
