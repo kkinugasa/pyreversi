@@ -26,7 +26,7 @@ pip install git+https://github.com/kkinugasa/reversi.git
 After pulling this repo and running `poetry install`, run the command:
 
 ```sh
-mkdocs serve
+poetry run mkdocs serve
 ```
 
 Then access <http://127.0.0.1:8888>
