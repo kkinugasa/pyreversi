@@ -1,6 +1,6 @@
 PACKAGE := $$(sed -n 's/name = "\(.*\)"/\1/p' pyproject.toml)
 VERSION := $$(sed -n 's/__version__ = "\(.*\)"/\1/p' $(PACKAGE)/_version.py )
-
+PATH_COV_BADGE := docs/figs/coverage.svg
 # It is better to set the value 1.
 export DOCKER_CONTENT_TRUST = 1
 export DOCKER_BUILDKIT = 1
@@ -44,6 +44,7 @@ requirements:
 
 test:
 	@poetry run pytest
+	@poetry run coverage-badge -fo $(PATH_COV_BADGE)
 
 version:
 	@sed -n 's/version = \(.*\)/__version__ = \1/p' pyproject.toml > $(PACKAGE)/_version.py
