@@ -1,6 +1,6 @@
 """reversi players"""
 import random
-from typing import Dict, List, Optional
+from typing import Optional
 
 from pyreversi.game import Game
 from pyreversi.logic import count_disk, execute_action
@@ -43,7 +43,7 @@ class GreedyPlayer(Player):
         legal_actions = game.get_legal_actions()
         if not legal_actions:
             return None
-        flip_num_action: Dict[int, List[Position]] = {}
+        flip_num_action: dict[int, list[Position]] = {}
         current_disk_num = count_disk(game.board, game.current_disk)
         for action in legal_actions:
             next_disk_num = count_disk(

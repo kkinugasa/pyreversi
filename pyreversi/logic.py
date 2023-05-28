@@ -2,9 +2,7 @@
 
 fundamental elements and logics of reversi
 """
-from __future__ import annotations
-
-from typing import FrozenSet, Optional, Tuple
+from typing import Optional
 
 import numpy as np
 import numpy.typing as npt
@@ -29,7 +27,7 @@ def init_board(length: int) -> Board:
     return Board(config)
 
 
-def obtain_legal_actions(board: Board, disk: Disk) -> FrozenSet[Position]:
+def obtain_legal_actions(board: Board, disk: Disk) -> frozenset[Position]:
     """obtain legal actions
 
     Args:
@@ -37,7 +35,7 @@ def obtain_legal_actions(board: Board, disk: Disk) -> FrozenSet[Position]:
         disk (Disk): 置きたい石
 
     Returns:
-        FrozenSet[Position]: legal actions
+        frozenset[Position]: legal actions
     """
     return frozenset(
         [position for position in board if _is_legal_action(board, disk, position)]
@@ -72,7 +70,7 @@ def _is_legal_action(board: Board, disk: Disk, position: Position) -> bool:
 
 def _increment_search(
     board: Board, disk: Disk, position: Position, direction: Direction
-) -> Tuple[bool, Optional[Position]]:
+) -> tuple[bool, Optional[Position]]:
     """diskと同じ色の位置を探す
 
     positionからdirectionの方向に進み，空マスに出会わず，diskと同じ色のマスに到達できるか．
@@ -85,7 +83,7 @@ def _increment_search(
         direction (Direction): 探す方向
 
     Returns:
-        Tuple[bool, Optional[Position]]: diskのマスに到達できたかの真偽値と到達した位置
+        tuple[bool, Optional[Position]]: diskのマスに到達できたかの真偽値と到達した位置
     """
     if not board.is_in_range(position):
         return False, None

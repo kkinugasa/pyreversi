@@ -1,7 +1,7 @@
 """reversi game"""
 from __future__ import annotations
 
-from typing import FrozenSet, Optional, cast
+from typing import Optional, cast
 
 from pyreversi import logic
 from pyreversi.models import Board, Disk, Position
@@ -26,7 +26,7 @@ class Game:
     def is_game_over(self) -> bool:
         return self._game_over
 
-    def get_legal_actions(self) -> FrozenSet[Position]:
+    def get_legal_actions(self) -> frozenset[Position]:
         return self._legal_actions
 
     def execute_action(self, action: Optional[Position]) -> None:

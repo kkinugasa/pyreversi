@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 from enum import IntEnum
-from typing import Iterator, NamedTuple, Tuple
+from typing import Iterator, NamedTuple
 
 import numpy as np
 import numpy.typing as npt
@@ -53,7 +53,7 @@ class Direction(NamedTuple):
     col: int
 
 
-_DIRECTIONS: Tuple[Direction, ...] = (
+_DIRECTIONS: tuple[Direction, ...] = (
     Direction(-1, -1),
     Direction(-1, 0),
     Direction(-1, 1),
